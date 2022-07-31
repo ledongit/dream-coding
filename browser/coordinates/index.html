@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coordinates</title>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main id="main">
+      <div class="coordinate">coordinate x,y</div>
+    </main>
+    <script>
+      const coordinate = document.querySelector("#main .coordinate");
+
+      function updateXY(mouseX, mouseY) {
+        coordinate.innerHTML = `<img src="img/target.png" alt="" /> </br> ${mouseX}px, ${mouseY}px`;
+      }
+      document.addEventListener("mousemove", (e) => {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        updateXY(mouseX, mouseY);
+        coordinate.style.left = mouseX + "px";
+        coordinate.style.top = mouseY + "px";
+      });
+    </script>
+  </body>
+</html>

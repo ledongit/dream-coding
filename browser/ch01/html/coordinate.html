@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coordinate</title>
+    <style>
+      body {
+        background-color: #000;
+      }
+      .colorBox {
+        display: block;
+        position: relative;
+      }
+      .colorBox div {
+        box-sizing: border-box;
+        background-color: khaki;
+        margin-top: 5px;
+        border: 1px solid rgb(203, 147, 255);
+        width: 200px;
+        height: 200px;
+      }
+      .colorBox .color {
+        background-color: violet;
+      }
+      .buttonBox {
+        position: fixed;
+        top: 50px;
+        right: 50px;
+        display: flex;
+        height: 20px;
+        z-index: 10;
+      }
+      .scroll {
+        width: 200px;
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="buttonBox">
+      <button class="scroll byBtn">Scroll by 100px(y)</button>
+      <button class="scroll toBtn">Scroll to 100px(y)</button>
+      <button class="scroll intoBtn">Scroll into special</button>
+    </div>
+    <div class="colorBox">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div class="color"></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <script>
+      const color = document.querySelector(".colorBox .color");
+      const byBtn = document.querySelector(".buttonBox .byBtn");
+      const toBtn = document.querySelector(".buttonBox .toBtn");
+      const intoBtn = document.querySelector(".buttonBox .intoBtn");
+
+      color.addEventListener("click", (e) => {
+        const rect = color.getBoundingClientRect();
+        console.log(rect);
+        console.log(`client: ${e.clientX}, ${e.clientY}`);
+        console.log(`page: ${e.pageX}, ${e.pageY}`);
+      });
+
+      byBtn.addEventListener("click", (e) => {
+        window.scrollBy({ top: 100, left: 0, behavior: "smooth" });
+      });
+
+      toBtn.addEventListener("click", (e) => {
+        window.scrollTo(0, 100);
+      });
+
+      intoBtn.addEventListener("click", (e) => {
+        // const colorX = window.scrollX + color.getBoundingClientRect().left;
+        // const colorY = window.scrollY + color.getBoundingClientRect().top;
+        // window.scrollTo(colorX, colorY);
+        color.scrollIntoView();
+        // scrollIntoView:  element가 있는 곳으로 이동할 수 있음
+      });
+    </script>
+  </body>
+</html>

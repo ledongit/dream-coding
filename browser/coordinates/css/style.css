@@ -1,0 +1,26 @@
+body {
+  background-color: #000;
+}
+
+#main {
+  position: absolute;
+}
+
+.coordinate {
+  position: absolute;
+  color: #fff;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  transform: translate(-50%, -50%);
+}
+.coordinate:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vh;
+  height: 1px;
+  background-color: #fff;
+}

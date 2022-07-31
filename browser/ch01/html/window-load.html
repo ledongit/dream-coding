@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Window Load</title>
+  </head>
+  <body>
+    <script>
+      // document 처리가 완료되면 호출
+      window.addEventListener("DOMContentLoaded", () => {
+        console.log("DOMContentLoaded");
+      });
+      // 모든 resources 처리가 완료되면 호출
+      window.addEventListener("load", () => {
+        console.log("load");
+      });
+
+      // beforeunload vs unload
+      //// beforeunload: unload가 되기전에 호출
+      //// unload: resource가 모두 unload 되면 호출
+      // addEventListner로 처리할 수 있음.
+    </script>
+  </body>
+</html>
