@@ -1,0 +1,24 @@
+body {
+  background-color: #000;
+}
+
+.carrotBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.carrotBox img {
+  width: 150px;
+  height: 150px;
+}
+.carrotBox .findBtn {
+  width: 150px;
+  height: 30px;
+  font-size: 20px;
+  background-color: plum;
+  font-weight: 500;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px rgba(221, 160, 221, 0.2);
+  cursor: pointer;
+  margin: 20px 0;
+}
