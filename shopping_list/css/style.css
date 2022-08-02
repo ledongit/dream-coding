@@ -1,0 +1,118 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+button {
+  background-color: darkgreen;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 4px;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+#main {
+  background-color: #fff;
+  width: 400px;
+  height: 600px;
+}
+#main .title {
+  display: flex;
+  justify-content: center;
+  font-family: "Square Peg";
+  font-size: 70px;
+  margin-top: 15px;
+}
+#main .clearBtnBox {
+  display: flex;
+  justify-content: flex-end;
+  margin: 15px 40px 20px 0;
+}
+#main .shoppingList {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 40px;
+  border: 1px solid #ccc;
+  overflow-y: scroll;
+  border-radius: 4px;
+  height: 380px;
+}
+#main .shoppingList li {
+  display: flex;
+  margin: 5px 20px 0;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+#main .shoppingList li:hover {
+  background-color: #90c8ac;
+}
+#main .shoppingList li:hover p {
+  color: #fff;
+}
+#main .shoppingList li:hover .binIcon {
+  color: #fff;
+}
+#main .shoppingList li p {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  flex-grow: 1;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+#main .shoppingList li .binIcon {
+  color: #000;
+  display: block;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+#main .shoppingList li .binIcon:hover {
+  color: #f00;
+}
+#main .inputBox {
+  display: flex;
+  justify-content: center;
+  margin: 15px 40px 0;
+}
+#main .inputBox .input {
+  display: flex;
+  flex-grow: 1;
+  border: 3px solid #ccc;
+  outline-color: #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 5px 0;
+}
+#main .inputBox .input.error {
+  animation: shake 0.2s ease-in-out 2;
+  border: 4px solid #ff5d5d;
+  outline-color: #ff5d5d;
+}
+#main .inputBox .enterBtn {
+  display: block;
+  margin-left: 20px;
+}
+
+@keyframes shake {
+  0% {
+    margin-left: 0rem;
+    margin-right: 0rem;
+  }
+  25% {
+    margin-left: 0.5rem;
+    margin-right: -0.5rem;
+  }
+  75% {
+    margin-left: -0.5rem;
+    margin-right: 0.5rem;
+  }
+  100% {
+    margin-left: 0rem;
+    margin-right: 0rem;
+  }
+}
