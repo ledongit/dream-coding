@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -16,48 +20,53 @@ button {
   cursor: pointer;
 }
 
-#main {
+#section {
   background-color: #fff;
   width: 400px;
   height: 600px;
+  border-radius: 10px;
 }
-#main .title {
+#section #header {
+  background: linear-gradient(90deg, rgba(196, 135, 21, 0.7931547619) 24%, rgba(23, 200, 214, 0.7679446779) 89%);
+  border-radius: 10px 10px 0 0;
+}
+#section #header .title {
   display: flex;
   justify-content: center;
   font-family: "Square Peg";
-  font-size: 70px;
-  margin-top: 15px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 40px;
+  padding: 10px 0;
 }
-#main .clearBtnBox {
-  display: flex;
-  justify-content: flex-end;
-  margin: 15px 40px 20px 0;
-}
-#main .shoppingList {
+#section .shoppingList {
   display: flex;
   flex-direction: column;
-  margin: 10px 40px;
   border: 1px solid #ccc;
-  overflow-y: scroll;
+  overflow-y: auto;
   border-radius: 4px;
-  height: 380px;
+  height: 480px;
 }
-#main .shoppingList li {
+#section .shoppingList li {
   display: flex;
   margin: 5px 20px 0;
   padding: 5px 10px;
   border-radius: 4px;
 }
-#main .shoppingList li:hover {
+#section .shoppingList li:hover {
   background-color: #90c8ac;
 }
-#main .shoppingList li:hover p {
+#section .shoppingList li:hover p {
   color: #fff;
 }
-#main .shoppingList li:hover .binIcon {
+#section .shoppingList li:hover .binIcon {
   color: #fff;
 }
-#main .shoppingList li p {
+#section .shoppingList li input {
+  display: flex;
+  align-items: center;
+}
+#section .shoppingList li p {
   display: flex;
   align-items: center;
   padding-left: 20px;
@@ -65,21 +74,29 @@ button {
   font-weight: 500;
   transition: all 0.25s ease;
 }
-#main .shoppingList li .binIcon {
+#section .shoppingList li .binIcon {
   color: #000;
-  display: block;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   transition: all 0.25s ease;
 }
-#main .shoppingList li .binIcon:hover {
+#section .shoppingList li .binIcon:hover {
   color: #f00;
+  transform: scale(1.1);
 }
-#main .inputBox {
+#section #footer {
+  background: linear-gradient(90deg, rgba(196, 135, 21, 0.7931547619) 24%, rgba(23, 200, 214, 0.7679446779) 89%);
+  border-radius: 0 0 10px 10px;
+  padding: 14.5px 0;
+}
+#section #footer .inputBox {
   display: flex;
   justify-content: center;
-  margin: 15px 40px 0;
+  margin: 0 40px;
 }
-#main .inputBox .input {
+#section #footer .inputBox .input {
+  font-size: 20px;
   display: flex;
   flex-grow: 1;
   border: 3px solid #ccc;
@@ -88,14 +105,27 @@ button {
   box-sizing: border-box;
   padding: 5px 0;
 }
-#main .inputBox .input.error {
+#section #footer .inputBox .input.error {
   animation: shake 0.2s ease-in-out 2;
   border: 4px solid #ff5d5d;
   outline-color: #ff5d5d;
 }
-#main .inputBox .enterBtn {
-  display: block;
+#section #footer .inputBox .enterBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left: 20px;
+  width: 39px;
+  font-size: 25px;
+  font-weight: 700;
+  border: 2px solid #fff;
+  background-color: #fff;
+  border-radius: 100%;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+#section #footer .inputBox .enterBtn:hover {
+  transform: scale(1.1);
 }
 
 @keyframes shake {
