@@ -1,11 +1,16 @@
 const input = document.querySelector("#footer .inputBox .input");
 const shoppingList = document.querySelector(".shoppingList");
 const enterBtn = document.querySelector("#footer .inputBox .enterBtn");
-const binIcon = document.querySelectorAll("#main .shoppingList li .binIcon");
+const form = document.querySelector(".new-form");
 
 // DOM에 변동이 많을 경우에는 innerHTML 보다는 createElement를 활용
 // 주석은 함수 단위를 어떤 것을 하는 것인지를 명시한느 것이 좋음
 // 왜? 를 설명할 수 있어야함.
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  onAdd();
+});
 
 function onAdd() {
   const text = input.value;
@@ -23,35 +28,49 @@ function onAdd() {
   }
 }
 
+// create new itemrow
+let id = 0;
+// UUID로 사용해야 함.
+// incremental ID는 사용을 지양해야함
+
 function createItems(text) {
   const itemRow = document.createElement("li");
+  itemRow.setAttribute("class", "itemRow");
+  itemRow.setAttribute("data-id", id);
 
-  const input = document.createElement("input");
-  input.setAttribute("type", "checkbox");
-
-  const p = document.createElement("p");
-  p.innerText = text;
-
-  const span = document.createElement("span");
-  span.setAttribute("class", "binIcon fa-solid fa-trash-can");
-  span.addEventListener("click", () => {
-    shoppingList.removeChild(itemRow);
-  });
-
-  itemRow.appendChild(input);
-  itemRow.appendChild(p);
-  itemRow.appendChild(span);
-
+  itemRow.innerHTML = `
+      <input type="checkbox" name="" id="">
+      <p>${text}</p>
+      <button class="item__delete"> 
+        <span class="binIcon fa-solid fa-trash-can" data-id=${id}></span>
+      </button>
+        `;
+  id++;
   return itemRow;
 }
 
-enterBtn.addEventListener("click", () => {
-  onAdd();
-});
+// form으로 대체
 
-input.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
-    onAdd();
+// // enter click event
+// enterBtn.addEventListener("click", () => {
+//   onAdd();
+// });
+
+// // enter button event
+// input.addEventListener("keydown", (event) => {
+//   if (event.isComposing) {
+//     return;
+//   }
+//   if (event.key === "Enter") {
+//     onAdd();
+//   }
+// });
+
+shoppingList.addEventListener("click", (event) => {
+  const id = event.target.dataset.id;
+  if (id) {
+    const toBeDeleted = document.querySelector(`.itemRow[data-id="${id}"]`);
+    toBeDeleted.remove();
   }
 });
 
