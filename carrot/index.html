@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrot Game</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/e3e6a0b8d6.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <main id="main">
+      <div class="optionBox">
+        <button class="playBtn"></button>
+        <div class="timer">
+          <span>0:0</span>
+        </div>
+        <div class="count">
+          <span>10</span>
+        </div>
+      </div>
+      <div class="playground">
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+      </div>
+    </main>
+  </body>
+  <script>
+    const character = document.querySelectorAll(".playground img");
+    const playBtn = document.querySelector("#main .optionBox .playBtn");
+
+    function getRandomNumber(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    character.forEach((element) => {
+      element.style.left = getRandomNumber(0, 90) + "%";
+      element.style.top = getRandomNumber(0, 60) + "%";
+    });
+
+    // disapear carrot
+
+    playBtn.addEventListener("click", () => {
+      playBtn.classList.add("play");
+      character.style.opacity = 1;
+    });
+  </script>
+</html>
