@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrot Game</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/e3e6a0b8d6.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <main id="main">
+      <div class="optionBox">
+        <button class="playBtn"></button>
+        <div class="timer">
+          <span class="time">1:00</span>
+        </div>
+        <div class="count">
+          <span>10</span>
+        </div>
+      </div>
+      <div class="playground">
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="carrot" src="img/carrot.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+        <img class="bug" src="img/bug.png" alt="" />
+      </div>
+      <div class="gameEnd">
+        <div class="endBox">
+          <button class="replay">
+            <a href=""><i class="fa-solid fa-arrow-rotate-left"></i></a>
+          </button>
+          <p class="result">YOU LOSE</p>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script>
+    const playground = document.querySelector(".playground");
+    const character = document.querySelectorAll(".playground img");
+    const playBtn = document.querySelector("#main .optionBox .playBtn");
+    const bugs = document.querySelectorAll("#main .playground .bug");
+    const carrots = document.querySelectorAll("#main .playground .carrot");
+    const score = document.querySelector(".count span");
+    const gameEnd = document.querySelector(".gameEnd");
+    const optionBox = document.querySelector(".optionBox");
+    const replayBtn = document.querySelector(".gameEnd .endBox .replay");
+    let count = 10;
+
+    function getRandomNumber(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    // click event
+    function clickCharacter() {
+      let count = 10;
+
+      character.forEach((element) => {
+        element.addEventListener("click", (e) => {
+          if (e.target.classList[0] === "carrot") {
+            element.remove();
+            count--;
+            score.innerHTML = count;
+          } else if (e.target.classList[0] === "bug") {
+            gameEnd.style.opacity = 1;
+            gameEnd.style.zIndex = 11;
+            playground.style.pointerEvents = "none";
+            optionBox.style.pointerEvents = "none";
+          }
+        });
+      });
+    }
+    // random position
+
+    function arrangeRandom() {
+      character.forEach((element) => {
+        element.style.opacity = 1;
+        element.style.left = getRandomNumber(0, 90) + "%";
+        element.style.top = getRandomNumber(0, 60) + "%";
+      });
+    }
+    // disapear carrot
+
+    function timer() {
+      let time = 10;
+      let min = "";
+      let sec = "";
+      const playTime = document.querySelector("#main .timer .time");
+      setInterval(function () {
+        min = parseInt(time / 60);
+        sec = time % 60;
+        if (sec < 10) {
+          playTime.innerHTML = `${min}:0${sec}`;
+        } else {
+          playTime.innerHTML = `${min}:${sec}`;
+        }
+        time--;
+        if (time < 0) {
+          clearInterval(timer);
+          playTime.innerHTML = "0:00";
+          gameEnd.style.opacity = 1;
+          gameEnd.style.zIndex = 11;
+          playground.style.pointerEvents = "none";
+          optionBox.style.pointerEvents = "none";
+        }
+      }, 1000);
+    }
+
+    function gameplay() {
+      playBtn.classList.add("play");
+      arrangeRandom();
+      clickCharacter();
+      timer();
+    }
+
+    playBtn.addEventListener("click", () => {
+      gameplay();
+      character.style.opacity = 1;
+    });
+
+    replayBtn.addEventListener("click", () => {
+      gameplay();
+      character.style.opacity = 0;
+    });
+  </script>
+</html>

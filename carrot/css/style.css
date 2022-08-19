@@ -15,6 +15,7 @@ body {
   border-radius: 40px;
   margin-top: 60px;
   flex-direction: column;
+  position: relative;
 }
 #main .optionBox {
   display: flex;
@@ -77,14 +78,57 @@ body {
 #main .playground {
   height: 50%;
   position: relative;
+  pointer-events: visible;
 }
 #main .playground img {
   position: absolute;
+  opacity: 0;
   top: 100px;
   left: 100%;
+  z-index: 10;
   cursor: pointer;
-  opacity: 0;
 }
 #main .playground img:hover {
   transform: scale(1.05);
+}
+#main .gameEnd {
+  position: absolute;
+  width: 400px;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.8);
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  opacity: 0;
+}
+#main .gameEnd .endBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+}
+#main .gameEnd .endBox .replay {
+  background: none;
+  border: none;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: rgb(255, 160, 71);
+  border-radius: 10px;
+  margin-bottom: 30px;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+#main .gameEnd .endBox .replay:hover {
+  transform: scale(1.1);
+}
+#main .gameEnd .endBox .replay a i {
+  color: #fff;
+}
+#main .gameEnd .endBox .result {
+  font-size: 30px;
+  color: #fff;
+  font-weight: 500;
 }
